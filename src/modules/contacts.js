@@ -29,18 +29,7 @@ function loadAllContacts() {
 loadAllContacts();
 
 
-
-// fetch("/contacts").then(function (response) {
-//   return response.json();
-// }).then(function (data) {
-//   // do something with data
-//   document.getElementById("numberOfContacts2").innerHTML = data.length;
-//
-//   console.log(data);
-// });
-
-
-getOneContact(1).then(function (data) {
+getOneContact(1).then( (data) => {
   document.getElementById("contactName").innerHTML = data.name;
 });
 
