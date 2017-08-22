@@ -16,17 +16,28 @@ function loadAllContacts() {
   const webRequestPromise = fetch("/contacts");
   const getJsonPromise = webRequestPromise.then(theWebRequstIsDone);
   getJsonPromise.then(jsonIsReady);
+
+  fetch("/contacts").then( (response) => {
+    return response.json();
+  }).then(function (data) {
+    // do something with data
+    document.getElementById("numberOfContacts2").innerHTML = data.length;
+
+    console.log(data);
+  });
 }
 loadAllContacts();
 
 
 
-fetch("/contacts").then(function (response) {
-  return response.json();
-}).then(function (data) {
-  // do something with data
-  console.log(data);
-});
+// fetch("/contacts").then(function (response) {
+//   return response.json();
+// }).then(function (data) {
+//   // do something with data
+//   document.getElementById("numberOfContacts2").innerHTML = data.length;
+//
+//   console.log(data);
+// });
 
 
 getOneContact(1).then(function (data) {
@@ -40,6 +51,5 @@ window.createContact = function () {
     occupation: "FBI Agent"
   }).then(function () {
     loadAllContacts();
-  });    
+  });
 };
-
